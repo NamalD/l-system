@@ -6,7 +6,7 @@ uses
   FMX.Graphics, System.Types;
 
 const
-  MOVE_DISTANCE = 10;
+  MOVE_DISTANCE = 15;
 
 var
   currentPosition: TPointF;

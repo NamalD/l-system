@@ -43,7 +43,7 @@ begin
   testTurtle := TTurtle.Create(startPoint, 20);
 end;
 
-
+// Draw a straight line using turtle, when button is clicked
 procedure TForm1.Button1Click(Sender: TObject);
 begin
   testTurtle.DrawLine;

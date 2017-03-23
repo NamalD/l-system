@@ -1,8 +1,0 @@
-unit Turtle;
-
-interface
-
-uses
-  FMX.Graphics, System.Types, Display;
-
-end.

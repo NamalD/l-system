@@ -38,6 +38,7 @@ object Form1: TForm1
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 2
     Cursor = crIBeam
+    Max = 360.000000000000000000
     Position.X = 224.000000000000000000
     Position.Y = 24.000000000000000000
   end

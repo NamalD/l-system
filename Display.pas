@@ -16,7 +16,6 @@ type
     NumberBox1: TNumberBox;
     Button3: TButton;
     NumberBox2: TNumberBox;
-    Edit1: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -47,8 +46,8 @@ begin
   Image1.Bitmap.Clear(TAlphaColors.White);
 
   // Initialise turtle
-  startPoint := TPointF.Create(300, 300);
-  testTurtle := TTurtle.Create(startPoint, 20);
+  startPoint := TPointF.Create(0, 200);
+  testTurtle := TTurtle.Create(startPoint, 5);
 
   // Initialise grammars
   InitialiseGrammars;
@@ -68,7 +67,12 @@ end;
 
 // Test parser with Koch curve grammar
 procedure TForm1.Button3Click(Sender: TObject);
+var
+  production: String;
+  moveList: TStringList;
 begin
-  Edit1.Text := Parse(kochCurveGrammar, Round(NumberBox2.Value));
+  production := Parse(kochCurveGrammar, Round(NumberBox2.Value));
+  moveList := FetchMovements(kochCurveGrammar, production);
+  testTurtle.InterpretMoves(moveList);
 end;
 end.

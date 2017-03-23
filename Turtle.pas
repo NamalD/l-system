@@ -3,7 +3,7 @@ unit Turtle;
 interface
 
 uses
-  FMX.Graphics, FMX.Dialogs, System.Types, Math;
+  FMX.Graphics, FMX.Dialogs, System.Types, Math, Classes, StrUtils, SysUtils;
 
 type
   TTurtle = Class(TObject)
@@ -15,7 +15,8 @@ type
     public
       constructor Create(position: TPointF; moveDist: Integer);
       procedure DrawLine();
-      procedure Rotate(angle: Integer; direction: Char);
+      procedure Rotate(angle: Integer; direction: String);
+      procedure InterpretMoves(moves: TStringList);
   End;
 
 implementation
@@ -27,7 +28,7 @@ uses Display;
 constructor TTurtle.Create(position: TPointF; moveDist: Integer);
 begin
   self.currentPosition := position;
-  self.currentAngle := 0;
+  self.currentAngle := 90;
   self.displayCanvas := Form1.Image1.Bitmap.Canvas;
   self.moveDist := moveDist;
 end;
@@ -56,7 +57,7 @@ begin
 end;
 
 // Rotate the turtle
-procedure TTurtle.Rotate(angle: Integer; direction: Char);
+procedure TTurtle.Rotate(angle: Integer; direction: String);
 begin
   if (direction = 'L') or (direction = 'l') then
     currentAngle := (currentAngle - angle) mod 360
@@ -66,6 +67,21 @@ begin
     // Display message if incorrect direction used
     // TODO: Raise exception instead
     ShowMessage('Invalid direction!');
+end;
+
+procedure TTurtle.InterpretMoves(moves: TStringList);
+var
+  move: String;
+  moveArray: TStringDynArray;
+begin
+  for move in moves do
+  begin
+    moveArray := SplitString(move, '\ ');
+    if moveArray[0] = 'draw' then
+      self.DrawLine
+    else if moveArray[0] = 'turn' then
+      self.Rotate(StrToInt(moveArray[1]), moveArray[2]);
+  end;
 end;
 
 end.

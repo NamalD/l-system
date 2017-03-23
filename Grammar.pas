@@ -2,25 +2,27 @@ unit Grammar;
 
 interface
 
+uses
+  Classes;
+
 type
   TGrammar = Class(TObject)
     private
-      gVariables, gConstants: array of Char;
+      gVariables, gConstants, gRules: TList;
       gAxiom: String;
-      gRules: array of String;
     public
-      constructor Create();
-    published
-      property variables : array of Char
-        read gVariables;
-      property constants : array of Char
-        read gConstants;
-      property axiom : String
-        read gAxiom;
-      property rules : array of String;
-        read gRules;
+      constructor Create(vars, consts, rules: TList; axiom: String);
+
   end;
 
 implementation
+
+constructor TGrammar.Create(vars, consts, rules: TList ;axiom: String);
+begin
+  gVariables := vars;
+  gConstants := consts;
+  gAxiom := axiom;
+  gRules := rules;
+end;
 
 end.

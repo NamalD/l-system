@@ -20,6 +20,7 @@ type
 
 implementation
 
+// Uses display to easily access canvas
 uses Display;
 
 // Create a basic turtle

@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
   FMX.Controls.Presentation, FMX.StdCtrls, Turtle, FMX.Edit, FMX.EditBox,
-  FMX.NumberBox;
+  FMX.NumberBox, DefinedGrammars, Parser;
 
 type
   TForm1 = class(TForm)
@@ -14,9 +14,13 @@ type
     Button1: TButton;
     Button2: TButton;
     NumberBox1: TNumberBox;
+    Button3: TButton;
+    NumberBox2: TNumberBox;
+    Edit1: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,6 +49,9 @@ begin
   // Initialise turtle
   startPoint := TPointF.Create(300, 300);
   testTurtle := TTurtle.Create(startPoint, 20);
+
+  // Initialise grammars
+  InitialiseGrammars;
 end;
 
 // Draw a straight line using turtle, when button is clicked
@@ -59,4 +66,9 @@ begin
   testTurtle.Rotate(Round(NumberBox1.Value), 'R');
 end;
 
+// Test parser with Koch curve grammar
+procedure TForm1.Button3Click(Sender: TObject);
+begin
+  Edit1.Text := Parse(kochCurveGrammar, Round(NumberBox2.Value));
+end;
 end.

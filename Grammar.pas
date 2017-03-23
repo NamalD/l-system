@@ -3,24 +3,28 @@ unit Grammar;
 interface
 
 uses
-  Classes;
+  Classes, Generics.Collections;
 
 type
   TGrammar = Class(TObject)
     private
-      gVariables, gConstants, gRules: TList;
       gAxiom: String;
+      // Use TDictionary to map replacements
+      gRules: TDictionary<String, String>;
     public
-      constructor Create(vars, consts, rules: TList; axiom: String);
-
+      constructor Create(axiom: String; rules: TDictionary<String, String>);
+    published
+      property axiom : String
+        read gAxiom;
+      property rules : TDictionary<String, String>
+        read gRules;
   end;
 
 implementation
 
-constructor TGrammar.Create(vars, consts, rules: TList ;axiom: String);
+// Constructor
+constructor TGrammar.Create(axiom: String; rules: TDictionary<String, String>);
 begin
-  gVariables := vars;
-  gConstants := consts;
   gAxiom := axiom;
   gRules := rules;
 end;

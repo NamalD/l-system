@@ -4,7 +4,10 @@ uses
   System.StartUpCopy,
   FMX.Forms,
   Display in 'Display.pas' {Form1},
-  Turtle in 'Turtle.pas';
+  Turtle in 'Turtle.pas',
+  Parser in 'Parser.pas',
+  Grammar in 'Grammar.pas',
+  DefinedGrammars in 'DefinedGrammars.pas';
 
 {$R *.res}
 

@@ -95,6 +95,9 @@
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="Turtle.pas"/>
+        <DCCReference Include="Parser.pas"/>
+        <DCCReference Include="Grammar.pas"/>
+        <DCCReference Include="DefinedGrammars.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -117,13 +120,7 @@
                 </Source>
             </Delphi.Personality>
             <Platforms>
-                <Platform value="Android">False</Platform>
-                <Platform value="iOSDevice32">False</Platform>
-                <Platform value="iOSDevice64">False</Platform>
-                <Platform value="iOSSimulator">False</Platform>
-                <Platform value="OSX32">False</Platform>
                 <Platform value="Win32">True</Platform>
-                <Platform value="Win64">False</Platform>
             </Platforms>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
